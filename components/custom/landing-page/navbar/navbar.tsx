@@ -1,6 +1,6 @@
 "use client";
 
-import { Logo } from "@/components/logo";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -40,7 +40,14 @@ export function Navbar() {
       <div className="relative container m-auto flex flex-col justify-between gap-4 px-6 md:flex-row md:items-center md:gap-6">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <Logo />
+            <Image
+              src="/supernovas-logo.png"
+              alt="Supernovas Academy Logo"
+              width={135}
+              height={36}
+              className="w-[120px] h-[32px] md:w-[135px] md:h-[36px]"
+              priority
+            />
           </Link>
           <Button
             variant="ghost"

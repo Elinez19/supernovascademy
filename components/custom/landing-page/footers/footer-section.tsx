@@ -1,6 +1,6 @@
 "use client";
 
-import { Logo } from "@/components/logo";
+import Image from "next/image";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 
@@ -16,7 +16,13 @@ export function Footer() {
         <div className="flex w-full flex-col items-center gap-12 text-center">
           {/* Logo Section */}
           <Link href="/" aria-label="Go to homepage">
-            <Logo />
+            <Image
+              src="/supernovas-logo.png"
+              alt="Supernovas Academy Logo"
+              width={135}
+              height={36}
+              className="w-[120px] h-[32px] md:w-[135px] md:h-[36px]"
+            />
           </Link>
 
           {/* Main Navigation */}
