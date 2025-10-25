@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const onest = Onest({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
         <head />
         <body className={`${onest.variable} relative antialiased`}>
           {children}
+          <Toaster />
         </body>
       </html>
     </>

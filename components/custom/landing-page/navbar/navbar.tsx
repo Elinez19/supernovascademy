@@ -60,10 +60,17 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden w-full flex-row justify-end gap-5 md:flex">
+        <div className="hidden w-full flex-row justify-center gap-5 md:flex">
           <NavMenuItems />
-          <Link href="#pricing">
-            <Button>Start studying</Button>
+        </div>
+
+        {/* Desktop Auth Buttons */}
+        <div className="hidden md:flex gap-2">
+          <Link href="/signin">
+            <Button variant="ghost">Sign In</Button>
+          </Link>
+          <Link href="/signup">
+            <Button>Sign Up</Button>
           </Link>
         </div>
 
@@ -71,9 +78,16 @@ export function Navbar() {
         {isMenuOpen && (
           <div className="flex w-full flex-col justify-end gap-5 pb-2.5 md:hidden">
             <NavMenuItems />
-            <Link href="#pricing">
-              <Button className="w-full">Start studying</Button>
-            </Link>
+            <div className="flex flex-col gap-2">
+              <Link href="/signin">
+                <Button variant="ghost" className="w-full">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button className="w-full">Sign Up</Button>
+              </Link>
+            </div>
           </div>
         )}
       </div>
