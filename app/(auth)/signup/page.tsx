@@ -23,12 +23,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-import { FaGoogle } from "react-icons/fa";
-
+import { FcGoogle } from "react-icons/fc";
+import { FiUser, FiMail, FiLock } from "react-icons/fi";
 const signupSchema = z
   .object({
-    firstName: z.string().min(2, "First name must be at least 2 characters"),
-    lastName: z.string().min(2, "Last name must be at least 2 characters"),
+    fullName: z.string().min(2, "Full name must be at least 2 characters"),
     email: z.string().email("Please enter a valid email address"),
     password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string(),
@@ -46,8 +45,7 @@ export default function SignupPage() {
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -133,46 +131,28 @@ export default function SignupPage() {
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-4"
                 >
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="firstName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-black font-medium">
-                            First Name
-                          </FormLabel>
-                          <FormControl>
+                  <FormField
+                    control={form.control}
+                    name="fullName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-black font-medium">
+                          Full Name
+                        </FormLabel>
+                        <FormControl>
+                          <div className="relative">
+                            <FiUser className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                             <Input
-                              placeholder="John"
+                              placeholder="John Doe"
                               {...field}
-                              className="border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
+                              className="pl-10 border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
                             />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="lastName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-black font-medium">
-                            Last Name
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Doe"
-                              {...field}
-                              className="border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
                   <FormField
                     control={form.control}
@@ -183,12 +163,15 @@ export default function SignupPage() {
                           Email
                         </FormLabel>
                         <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="john@example.com"
-                            {...field}
-                            className="border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
-                          />
+                          <div className="relative">
+                            <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <Input
+                              type="email"
+                              placeholder="john@example.com"
+                              {...field}
+                              className="pl-10 border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
+                            />
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -204,12 +187,15 @@ export default function SignupPage() {
                           Password
                         </FormLabel>
                         <FormControl>
-                          <Input
-                            type="password"
-                            placeholder="Enter your password"
-                            {...field}
-                            className="border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
-                          />
+                          <div className="relative">
+                            <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <Input
+                              type="password"
+                              placeholder="Enter your password"
+                              {...field}
+                              className="pl-10 border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
+                            />
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -225,12 +211,15 @@ export default function SignupPage() {
                           Confirm Password
                         </FormLabel>
                         <FormControl>
-                          <Input
-                            type="password"
-                            placeholder="Confirm your password"
-                            {...field}
-                            className="border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
-                          />
+                          <div className="relative">
+                            <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <Input
+                              type="password"
+                              placeholder="Confirm your password"
+                              {...field}
+                              className="pl-10 border-gray-300 focus:border-[#FF6B35] focus:ring-[#FF6B35]/20"
+                            />
+                          </div>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -239,7 +228,7 @@ export default function SignupPage() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-linear-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#FF8C42] hover:to-[#FF6B35] text-white font-medium py-2.5 transition-all duration-200"
+                    className="w-full bg-linear-to-r from-[#f05406] to-[#F7931E] hover:from-[#FF8C42] hover:to-[#FF6B35] text-white font-medium py-2.5 transition-all duration-200"
                     disabled={isLoading}
                   >
                     {isLoading ? "Creating Account..." : "Create Account"}
@@ -268,7 +257,7 @@ export default function SignupPage() {
                   toast.info("Google sign-up coming soon!");
                 }}
               >
-                <FaGoogle className="w-5 h-5 mr-2" size={20} color="#FF0000" />
+                <FcGoogle className="w-5 h-5 mr-2" size={20} color="#FF0000" />
                 Sign up with Google
               </Button>
 

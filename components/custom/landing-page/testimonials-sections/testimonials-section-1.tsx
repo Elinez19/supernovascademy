@@ -9,41 +9,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Tagline } from "@/components/custom/landing-page/tagline";
+import { TESTIMONIALS_DATA } from "@/lib/constants";
 
-const testimonialsData = [
-  {
-    id: 1,
-    quote:
-      "Supernovas Academy transformed my exam preparation completely. I passed my competitive exam on the first attempt thanks to their comprehensive study materials and practice tests.",
-    authorName: "David Park",
-    authorRole: "Software Engineer",
-    avatarSrc: "/DavidPark.png",
-  },
-  {
-    id: 2,
-    quote:
-      "The personalized study plans and detailed analytics helped me identify my weak areas and improve my scores significantly. Highly recommended for serious exam preparation.",
-    authorName: "Sarah Johnson",
-    authorRole: "Medical Student",
-    avatarSrc: "/placeholder-user.jpg",
-  },
-  {
-    id: 3,
-    quote:
-      "I was struggling with time management during exams. The mock tests and practice sessions on this platform gave me the confidence to ace my engineering entrance exam.",
-    authorName: "Rajesh Kumar",
-    authorRole: "Engineering Student",
-    avatarSrc: "/placeholder-user.jpg",
-  },
-  {
-    id: 4,
-    quote:
-      "The AI-powered study notes and smart search feature made it so easy to find and review important concepts. This platform is a game-changer for exam prep.",
-    authorName: "Monica Kurt",
-    authorRole: "MBA Aspirant",
-    avatarSrc: "/MonicaKurt.png",
-  },
-];
+const testimonialsData = TESTIMONIALS_DATA;
 
 export default function TestimonialsSection1() {
   return (
@@ -111,8 +79,8 @@ export default function TestimonialsSection1() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-4 text-white hover:bg-white/20" />
-            <CarouselNext className="right-4 text-white hover:bg-white/20" />
+            <CarouselPrevious className="left-4 text-blue-950 hover:bg-blue-950/20" />
+            <CarouselNext className="right-4 text-blue-950 hover:bg-blue-950/20" />
           </Carousel>
         </div>
       </div>

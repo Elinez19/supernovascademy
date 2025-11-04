@@ -23,8 +23,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-import { ArrowLeftIcon, Chrome } from "lucide-react";
-
+import { ArrowLeftIcon } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
 const forgotPasswordSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
 });
@@ -64,7 +64,7 @@ export default function ForgotPasswordPage() {
     return (
       <div className="min-h-screen flex">
         {/* Left Side - Gradient Background */}
-        <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#FF8C42] via-[#FF6B35] to-[#F7931E] relative overflow-hidden">
+        <div className="hidden lg:flex lg:w-1/2 bg-linear-to-br from-[#FF8C42] via-[#FF6B35] to-[#F7931E] relative overflow-hidden">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="relative z-10 flex flex-col justify-center items-center text-white p-12">
             <div className="text-center space-y-6">
@@ -257,7 +257,7 @@ export default function ForgotPasswordPage() {
                   toast.info("Google sign-in coming soon!");
                 }}
               >
-                <Chrome className="w-5 h-5 mr-2" />
+                <FcGoogle className="w-5 h-5 mr-2" size={20} color="#FF0000" />
                 Sign in with Google
               </Button>
 

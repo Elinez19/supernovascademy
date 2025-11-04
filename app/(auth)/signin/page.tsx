@@ -23,8 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-import { FaGoogle } from "react-icons/fa";
-
+import { FcGoogle } from "react-icons/fc";
 const signinSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(1, "Password is required"),
@@ -214,7 +213,7 @@ export default function SigninPage() {
                   toast.info("Google sign-in coming soon!");
                 }}
               >
-                <FaGoogle className="w-5 h-5 mr-2" size={20} color="#FF0000" />
+                <FcGoogle className="w-5 h-5 mr-2" size={20} color="#FF0000" />
                 Sign in with Google
               </Button>
 

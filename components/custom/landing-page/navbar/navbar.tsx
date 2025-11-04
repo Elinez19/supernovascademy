@@ -5,14 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
-
-const MENU_ITEMS = [
-  { label: "Features", href: "#features" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "Study Materials", href: "#study-materials" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-] as const;
+import { MENU_ITEMS } from "@/lib/constants";
 
 interface NavMenuItemsProps {
   className?: string;
@@ -36,18 +29,21 @@ export function Navbar() {
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   return (
-    <nav className="bg-background sticky top-0 isolate z-50 border-b py-3.5 md:py-4">
-      <div className="relative container m-auto flex flex-col justify-between gap-4 px-6 md:flex-row md:items-center md:gap-6">
+    <nav className="bg-background sticky top-0 isolate z-50 border-b py-2 md:py-3">
+      <div className="relative container m-auto flex flex-col justify-between gap-2 px-6 md:flex-row md:items-center md:gap-4">
         <div className="flex items-center justify-between">
-          <Link href="/">
+          <Link href="/" className="flex items-center">
             <Image
               src="/supernovas-logo.png"
               alt="Supernovas Academy Logo"
-              width={135}
-              height={36}
-              className="w-[120px] h-[32px] md:w-[135px] md:h-[36px]"
+              width={180}
+              height={180}
+              className="h-10 w-auto md:h-12"
               priority
             />
+            <span className="text-2xl font-bold hidden md:inline-block">
+              Supernovas Academy
+            </span>
           </Link>
           <Button
             variant="ghost"
@@ -60,7 +56,7 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden w-full flex-row justify-center gap-5 md:flex">
+        <div className="hidden w-full flex-row justify-center gap-3 md:flex">
           <NavMenuItems />
         </div>
 

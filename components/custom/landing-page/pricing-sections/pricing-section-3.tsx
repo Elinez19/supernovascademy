@@ -12,64 +12,9 @@ import {
 } from "@/components/ui/tooltip";
 import { Tagline } from "@/components/custom/landing-page/tagline";
 import { VariantProps } from "class-variance-authority";
+import { PRICING_DATA } from "@/lib/constants";
 
-const pricingData = {
-  plans: [
-    {
-      name: "Free",
-      description:
-        "Perfect for students starting their exam preparation journey.",
-      features: [
-        {
-          name: "5 practice tests/month",
-          tooltip: "Limited practice tests for free tier",
-        },
-        {
-          name: "Basic study materials",
-          tooltip: "Access to core study content",
-        },
-        {
-          name: "30-day progress tracking",
-          tooltip: "Track your progress for 30 days",
-        },
-      ],
-      price: 0,
-      period: "/month",
-      variant: "outline",
-    },
-    {
-      name: "Premium",
-      description:
-        "Ideal for serious students preparing for competitive exams.",
-      features: [
-        {
-          name: "Unlimited practice tests",
-          tooltip: "Access to all practice tests",
-        },
-        {
-          name: "Advanced analytics",
-          tooltip: "Detailed performance insights",
-        },
-        {
-          name: "Unlimited study materials",
-          tooltip: "Full access to all content",
-        },
-        {
-          name: "Personalized study plans",
-          tooltip: "AI-powered study recommendations",
-        },
-        {
-          name: "24/7 expert support",
-          tooltip: "Round-the-clock academic assistance",
-        },
-      ],
-      price: 29,
-      period: "/month",
-      variant: "default",
-      highlighted: true,
-    },
-  ],
-};
+const pricingData = PRICING_DATA;
 
 export function PricingSection() {
   return (
@@ -99,8 +44,8 @@ export function PricingSection() {
               <Card
                 key={plan.name}
                 className={`p-6 shadow-none sm:p-12 md:rounded-tl-xl md:rounded-tr-none md:rounded-br-none md:rounded-bl-xl md:border-r-0 ${
-                  plan.highlighted
-                    ? "shadow-[0px_0px_0px_6px_rgba(7,46,106,0.05)] md:rounded-xl md:border-r-1"
+                  (plan as { highlighted?: boolean }).highlighted
+                    ? "shadow-[0px_0px_0px_6px_rgba(7,46,106,0.05)] md:rounded-xl md:border-r"
                     : ""
                 }`}
               >
@@ -112,7 +57,9 @@ export function PricingSection() {
                     <div className="relative flex flex-col gap-3">
                       <h3
                         className={`text-lg font-semibold ${
-                          plan.highlighted ? "text-primary" : ""
+                          (plan as { highlighted?: boolean }).highlighted
+                            ? "text-primary"
+                            : ""
                         }`}
                       >
                         {plan.name}
