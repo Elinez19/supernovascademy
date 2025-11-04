@@ -31,6 +31,7 @@ export function Navbar() {
   return (
     <nav className="bg-background sticky top-0 isolate z-50 border-b py-2 md:py-3">
       <div className="relative container m-auto flex flex-col justify-between gap-2 px-6 md:flex-row md:items-center md:gap-4">
+        {/* Logo and Menu Button */}
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image
@@ -38,11 +39,11 @@ export function Navbar() {
               alt="Supernovas Academy Logo"
               width={180}
               height={180}
-              className="h-10 w-auto md:h-12"
+              className="h-10 w-auto md:h-12 -mr-3"
               priority
             />
-            <span className="text-2xl font-bold hidden md:inline-block">
-              Supernovas Academy
+            <span className="text-2xl font-bold hidden md:inline-block whitespace-nowrap">
+              upernovas Academy
             </span>
           </Link>
           <Button
