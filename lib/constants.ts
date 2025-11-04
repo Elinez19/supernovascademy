@@ -122,11 +122,10 @@ export const TESTIMONIALS_DATA = [
 ] as const;
 
 export const MENU_ITEMS = [
+  { label: "Home", href: "/" },
   { label: "Features", href: "#features" },
   { label: "How it works", href: "#how-it-works" },
   { label: "Resources", href: "/resources" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ] as const;
-
-

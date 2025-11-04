@@ -39,7 +39,7 @@ export function Navbar() {
               alt="Supernovas Academy Logo"
               width={180}
               height={180}
-              className="h-10 w-auto md:h-12 -mr-3"
+              className="h-10 w-auto md:h-12 -mr-4"
               priority
             />
             <span className="text-2xl font-bold hidden md:inline-block whitespace-nowrap">
