@@ -65,7 +65,7 @@ export function HeroSection() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Button>Start free practice</Button>
             <Button variant="ghost">
-              Explore courses
+              Explore questions
               <ArrowRight />
             </Button>
           </div>
