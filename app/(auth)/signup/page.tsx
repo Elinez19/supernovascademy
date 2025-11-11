@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,6 +42,7 @@ type SignupFormValues = z.infer<typeof signupSchema>;
 
 export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
@@ -52,22 +54,28 @@ export default function SignupPage() {
     },
   });
 
-  const onSubmit = (data: SignupFormValues) => {
-    setIsLoading(true);
-
-    // Simulate API call
-    new Promise((resolve) => setTimeout(resolve, 1000))
-      .then(() => {
-        toast.success("Account created successfully!");
-        console.log("Signup data:", data);
-        form.reset();
-      })
-      .catch(() => {
-        toast.error("Failed to create account. Please try again.");
-      })
-      .finally(() => {
-        setIsLoading(false);
+  const onSubmit = async (data: SignupFormValues) => {
+    try {
+      setIsLoading(true);
+      const res = await fetch("/api/auth/sign-up/email", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: data.fullName,
+          email: data.email,
+          password: data.password,
+        }),
       });
+      if (!res.ok) {
+        throw new Error("Failed to create account");
+      }
+      toast.success("Account created successfully!");
+      router.push("/dashboard");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Failed to create account. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

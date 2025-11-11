@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,6 +34,7 @@ type SigninFormValues = z.infer<typeof signinSchema>;
 
 export default function SigninPage() {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<SigninFormValues>({
     resolver: zodResolver(signinSchema),
@@ -42,22 +44,24 @@ export default function SigninPage() {
     },
   });
 
-  const onSubmit = (data: SigninFormValues) => {
-    setIsLoading(true);
-
-    // Simulate API call
-    new Promise((resolve) => setTimeout(resolve, 1000))
-      .then(() => {
-        toast.success("Welcome back!");
-        console.log("Signin data:", data);
-        form.reset();
-      })
-      .catch(() => {
-        toast.error("Invalid credentials. Please try again.");
-      })
-      .finally(() => {
-        setIsLoading(false);
+  const onSubmit = async (data: SigninFormValues) => {
+    try {
+      setIsLoading(true);
+      const res = await fetch("/api/auth/sign-in/email", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: data.email, password: data.password }),
       });
+      if (!res.ok) {
+        throw new Error("Invalid credentials");
+      }
+      toast.success("Welcome back!");
+      router.push("/dashboard");
+    } catch (e: any) {
+      toast.error(e?.message ?? "Invalid credentials. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
